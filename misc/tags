@@ -1,0 +1,9 @@
+SO_LONG_H	../includes/so_long.h	/^#define SO_LONG_H$/
+t_data	../includes/so_long.h	/^}				t_data;$/
+ft_init_data	../src/data_init/data_init.c	/^void	ft_init_data(t_data *data)$/
+ft_error_exit	../src/error_mngmt/errors.c	/^void	ft_error_exit(char *msg)$/
+Mmain	../src/main.c	/^int main(int argc, char **argv)$/
+ft_check_args	../src/main.c	/^void	ft_check_args(int argc)$/
+ft_check_for_valid_map	../src/map_parsing/map_parsing.c	/^void	ft_check_for_valid_map(char *map_file)$/
+ft_parse_map	../src/map_parsing/map_parsing.c	/^void	ft_parse_map(char *map_file)$/
+ft_minilibx_loop	../src/minilibx_wrapers/minilibx_loop.c	/^void	ft_minilibx_loop(void)$/
