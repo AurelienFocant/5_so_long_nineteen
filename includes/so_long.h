@@ -1,21 +1,23 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+#include "so_long.h"
 #include "libft.h"
-#include "prototypes.h"
 
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <math.h>
-
-void	ft_minilibx_loop(void);
 
 typedef struct	s_data
 {
-	unsigned int	x_axis_map_size;
-	unsigned int	y_axis_map_size;
+	size_t	x_axis_map_size;
+	size_t	y_axis_map_size;
+	int		fd;
+	char	**map;
 }				t_data;
 
+#include "prototypes.h"
 
 #endif

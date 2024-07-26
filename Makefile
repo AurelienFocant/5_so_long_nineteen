@@ -27,6 +27,10 @@ LIB_DIR	=	libft
 
 LIB		=	$(LIB_DIR)/libft.a
 
+MLX_DIR		=	mlx
+
+MLX			=	mlx
+
 .PHONY: all lib clean fclean libclean re
 #---------------------------------------------------------#
 NAME	=	so_long
@@ -36,14 +40,15 @@ all:		$(NAME)
 lib:		$(LIB)
 
 $(NAME):	$(OBJ) $(LIB)
-	$(CC) $(CFLAGS) $(DFLAGS) $(GFLAGS) $(OBJ) -o $@ -L$(LIB_DIR) -lft $(MLX_FLAGS)
+	$(MAKE) -C $(LIB_DIR)
+	$(MAKE) -C $(MLX_DIR)
+	$(CC) $(CFLAGS) $(DFLAGS) $(GFLAGS) $(OBJ) -o $@ -L$(LIB_DIR) -lft $(MLX_FLAGS) -L$(MLX_DIR) -lmx
 
 $(LIB):
-	$(MAKE) -C $(LIB_DIR)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_SUBDIRS) $(OBJ_DIR)
 	@echo $(OBJ_SUBDIRS)
-	$(CC) $(CFLAGS) $(DFLAGS) $(GFLAGS) -I$(INC_DIR) -I$(LIB_DIR)/$(INC_DIR) -c $< -o $@ 
+	$(CC) $(CFLAGS) $(DFLAGS) $(GFLAGS) -I$(INC_DIR) -I$(LIB_DIR)/$(INC_DIR) -I$(MLX_DIR) -c $< -o $@ 
 
 $(OBJ_DIR):
 	mkdir -p $@
