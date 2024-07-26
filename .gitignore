@@ -1,0 +1,13 @@
+.DS_Store
+
+*.swp
+
+pipex
+*out*
+*.o
+
+outfile
+
+tags
+
+./libft/libft.a
