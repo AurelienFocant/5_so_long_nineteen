@@ -45,6 +45,7 @@ $(NAME):	$(OBJ) $(LIB)
 	$(CC) $(CFLAGS) $(DFLAGS) $(GFLAGS) $(OBJ) -o $@ -L$(LIB_DIR) -lft $(MLX_FLAGS) -L$(MLX_DIR) -lmx
 
 $(LIB):
+	$(MAKE) -C $(LIB_DIR)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_SUBDIRS) $(OBJ_DIR)
 	@echo $(OBJ_SUBDIRS)

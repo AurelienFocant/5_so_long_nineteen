@@ -1,34 +1,14 @@
 #include "so_long.h"
 
-int		ft_check_file_extension(char *map_file)
-{
-	char	*ptr;
-
-	ptr = ft_strchr(map_file, '.');
-	if (!ptr)
-		ft_error_exit("map is not of ber type");
-	if (ft_strncmp(++ptr, "ber", 4) != 0)
-		ft_error_exit("map is not of ber type");
-	return (1);
-}
-
-int		ft_open_map(char *map_file)
-{
-	int	fd;
-
-	fd = open(map_file, O_RDONLY);
-	if (fd < 0)
-		ft_error_exit("couldn't open map");
-	return (fd);
-}
-
 void	ft_get_window_dimensions(t_data *data)
 {
+	int		fd;
 	char	*line;
 	size_t	rows;
 	size_t	columns;
 
-	line = get_next_line(data->fd);
+	fd = ft_open_map(data->map_file);
+	line = get_next_line(fd);
 	if (!line)
 		ft_error_exit("invalid map");
 	rows = 0;
@@ -41,23 +21,39 @@ void	ft_get_window_dimensions(t_data *data)
 		if (ft_strlen(line) != data->x_axis_map_size)
 			ft_error_exit("invalid map");
 		rows++;
-		line = get_next_line(data->fd);
+		line = get_next_line(fd);
 	}
 	data->y_axis_map_size = rows;
-	printf("%lu\n", data->y_axis_map_size);
-	printf("%lu\n", data->x_axis_map_size);
+	close(fd);
 }
 
-void	ft_check_for_valid_map(char *map_file, t_data *data)
+void	ft_print_map(t_data *data)
 {
-	ft_check_file_extension(map_file);
-	data->fd = ft_open_map(map_file);
-	ft_get_window_dimensions(data);
+	unsigned int	row;
+
+	row = 0;
+	while (row < data->y_axis_map_size)
+		printf("%s", data->map[row++]);
 }
 
-void	ft_get_map_dimensions(t_data *data)
+void	ft_parse_map(t_data *data)
 {
-	(void) data;
-	return ;
+	int				fd;
+	unsigned int	row;
+	char			*line;
 
+	fd = ft_open_map(data->map_file);
+	data->map = malloc(sizeof(char *) * (data->y_axis_map_size));
+	line = get_next_line(fd);
+	if (!line)
+		ft_error_exit("invalid map");
+	row = 0;
+	while (line)
+	{
+		data->map[row] = line;
+		line = get_next_line(fd);
+		row++;
+	}
+	close(fd);
 }
+// don't forget to free the map !!

@@ -9,14 +9,15 @@ void	ft_check_args(int argc)
 	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_data	data;
+	t_data		data;
 
 	ft_check_args(argc);
 	ft_check_for_valid_map(argv[1], &data);
-	ft_init_data(&data);
-	ft_minilibx_loop();
-
+	ft_parse_map(&data);
+	ft_mlx_init(&data);
+	ft_draw_map(&data);
+	ft_minilibx_loop(&data);
 	exit(EXIT_SUCCESS);
 }
