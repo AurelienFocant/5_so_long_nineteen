@@ -8,7 +8,7 @@ void	ft_get_window_dimensions(t_data *data)
 	size_t	columns;
 
 	fd = ft_open_map(data->map_file);
-	line = get_next_line(fd);
+	line = ft_get_next_line(fd);
 	if (!line)
 		ft_error_exit("invalid map");
 	rows = 0;
@@ -21,7 +21,7 @@ void	ft_get_window_dimensions(t_data *data)
 		if (ft_strlen(line) != data->x_axis_map_size)
 			ft_error_exit("invalid map");
 		rows++;
-		line = get_next_line(fd);
+		line = ft_get_next_line(fd);
 	}
 	data->y_axis_map_size = rows;
 	close(fd);
@@ -44,14 +44,14 @@ void	ft_parse_map(t_data *data)
 
 	fd = ft_open_map(data->map_file);
 	data->map = malloc(sizeof(char *) * (data->y_axis_map_size));
-	line = get_next_line(fd);
+	line = ft_get_next_line(fd);
 	if (!line)
 		ft_error_exit("invalid map");
 	row = 0;
 	while (line)
 	{
 		data->map[row] = line;
-		line = get_next_line(fd);
+		line = ft_get_next_line(fd);
 		row++;
 	}
 	close(fd);
