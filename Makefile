@@ -5,8 +5,6 @@ CFLAGS		=	-Wall -Wextra -Werror
 
 GFLAGS		=	-g
 
-DFLAGS		=	-fsanitize=address -fsanitize=undefined
-
 MLX_FLAGS	=	-framework OpenGL -framework AppKit
 #---------------------------------------------------------#
 SRC			=	$(shell find $(SRC_DIR) -type f -name "*.c")
