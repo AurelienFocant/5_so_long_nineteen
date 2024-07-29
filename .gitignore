@@ -2,12 +2,7 @@
 
 *.swp
 
-pipex
-*out*
-*.o
+so_long
+obj/*
 
 mlx/*.o
-
-tags
-
-./libft/libft.a
