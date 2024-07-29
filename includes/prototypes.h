@@ -1,6 +1,8 @@
 #include "so_long.h"
 
 /*----------------  draw_map.c  ---------------*/
+void	ft_retrieve_sprites(t_data *data);
+void	ft_draw_tile(void *sprite, int x, int y, t_data *data);
 void	ft_draw_map(t_data *data);
 
 /*----------------  errors.c  ---------------*/
@@ -17,7 +19,6 @@ void	ft_check_for_valid_map(char *map_file, t_data *data);
 
 /*----------------  map_parsing.c  ---------------*/
 void	ft_get_window_dimensions(t_data *data);
-void	ft_print_map(t_data *data);
 void	ft_parse_map(t_data *data);
 
 /*----------------  minilibx_loop.c  ---------------*/

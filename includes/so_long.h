@@ -11,6 +11,8 @@
 #include <stdio.h>
 #include <math.h>
 
+# define TILE_WIDTH 64
+# define TILE_HEIGHT 64
 # define HEIGHT 600
 # define WIDTH 420
 
@@ -21,19 +23,32 @@
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
+# define ARROW_UP 126 
+# define ARROW_LEFT 123 
+# define ARROW_DOWN 125 
+# define ARROW_RIGHT 124 
+
+typedef struct	s_sprite
+{
+	void	*wall;
+	void	*player;
+}				t_sprite;
 
 typedef struct	s_data
 {
-	size_t	x_axis_map_size;
-	size_t	y_axis_map_size;
-	char	*map_file;
-	char	**map;
-	void	*mlx;
-	void	*win;
-	void	*img;
-	int		bits_per_pixel;
-	int		bytes_per_line;
-	int		endian;
+	size_t		x_axis_map_size;
+	size_t		y_axis_map_size;
+	char		*map_file;
+	char		**map;
+	void		*mlx;
+	void		*win;
+	void		*img;
+	int			bits_per_pixel;
+	int			bytes_per_line;
+	int			endian;
+	int			y_player_pos;
+	int			x_player_pos;
+	t_sprite	sprite;
 }				t_data;
 
 #include "prototypes.h"

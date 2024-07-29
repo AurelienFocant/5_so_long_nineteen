@@ -27,15 +27,6 @@ void	ft_get_window_dimensions(t_data *data)
 	close(fd);
 }
 
-void	ft_print_map(t_data *data)
-{
-	unsigned int	row;
-
-	row = 0;
-	while (row < data->y_axis_map_size)
-		printf("%s", data->map[row++]);
-}
-
 void	ft_parse_map(t_data *data)
 {
 	int				fd;
@@ -54,6 +45,7 @@ void	ft_parse_map(t_data *data)
 		line = ft_get_next_line(fd);
 		row++;
 	}
+	ft_retrieve_sprites(data);
 	close(fd);
 }
 // don't forget to free the map !!
