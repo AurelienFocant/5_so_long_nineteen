@@ -6,7 +6,7 @@ pipex
 *out*
 *.o
 
-outfile
+mlx/*.o
 
 tags
 
