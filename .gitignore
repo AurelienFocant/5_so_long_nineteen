@@ -6,3 +6,5 @@ so_long
 obj/*
 
 mlx/*.o
+
+misc/tags
