@@ -1,5 +1,5 @@
 __main
-	-- check for errors
+	-- check for arg errors
 		- check nb of arg
 		- check map file
 	
@@ -10,7 +10,7 @@ __main
 			-- is it rectangular ?
 			-- is there 4 walls ?
 			-- is there only allowed signs ?
-			-- can i backtrack through it ?
+			-- can I backtrack through it ?
 		- get player position
 
 	-- setup_game
