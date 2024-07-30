@@ -23,6 +23,7 @@ void	ft_get_window_dimensions(t_data *data)
 		if (ft_strlen(line) - nl != data->x_axis_map_size)
 			ft_error_exit("invalid map");
 		rows++;
+		free(line);
 		line = ft_get_next_line(fd);
 	}
 	data->y_axis_map_size = rows;
@@ -52,7 +53,7 @@ void	ft_get_player_position(t_data *data)
 }
 
 void	ft_parse_map(t_data *data)
-{
+{ 
 	int				fd;
 	unsigned int	row;
 	char			*line;
