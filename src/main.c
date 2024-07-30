@@ -15,9 +15,8 @@ int	main(int argc, char **argv)
 
 	ft_check_args(argc);
 	ft_check_for_valid_map(argv[1], &data);
-	ft_parse_map(&data);
 	ft_mlx_init(&data);
-	ft_draw_map(&data);
+	ft_parse_map(&data);
 	ft_minilibx_loop(&data);
 	exit(EXIT_SUCCESS);
 }

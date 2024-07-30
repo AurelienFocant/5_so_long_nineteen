@@ -13,25 +13,32 @@
 
 # define TILE_WIDTH 64
 # define TILE_HEIGHT 64
-# define HEIGHT 600
-# define WIDTH 420
+
+# define WALL		'1'
+# define PLAYER		'P'
+# define EXIT		'E'
+# define COLLECT	'C'
+# define EMPTY		'0'
 
 # define KEYDOWN 2
-# define ESC 53
 
-# define KEY_W 13
-# define KEY_A 0
-# define KEY_S 1
-# define KEY_D 2
-# define ARROW_UP 126 
-# define ARROW_LEFT 123 
-# define ARROW_DOWN 125 
-# define ARROW_RIGHT 124 
+# define ESC	53
+# define KEY_W	13
+# define KEY_A	0
+# define KEY_S	1
+# define KEY_D	2
+# define ARROW_UP		126 
+# define ARROW_LEFT		123 
+# define ARROW_DOWN		125 
+# define ARROW_RIGHT	124 
 
 typedef struct	s_sprite
 {
 	void	*wall;
 	void	*player;
+	void	*exit;
+	void	*collectible;
+	void	*empty_tile;
 }				t_sprite;
 
 typedef struct	s_data
