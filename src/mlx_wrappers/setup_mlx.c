@@ -27,7 +27,7 @@ void	fn_setup_mlx(t_game *game)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 	{
-		//free map
+		fn_free_map(game);
 		fn_error_exit("mlx init failed", ENOENT, 6);
 	}
 	game->win = mlx_new_window(game->mlx, window_width, window_height, "plouf");

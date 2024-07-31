@@ -21,7 +21,8 @@
 # define COLLECT	'C'
 # define EMPTY		'0'
 
-# define KEYDOWN 2
+# define KEYDOWN	 2
+# define RED_LIGHT	17
 
 # define ESC	53
 # define KEY_W	13
