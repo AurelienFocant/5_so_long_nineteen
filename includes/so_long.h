@@ -21,6 +21,7 @@
 # define COLLECT	'C'
 # define EMPTY		'0'
 
+# define NO_MASK	 0
 # define KEYDOWN	 2
 # define RED_LIGHT	17
 

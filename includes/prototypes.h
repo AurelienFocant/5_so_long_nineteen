@@ -5,7 +5,10 @@ void	fn_draw_tile(t_game *game, void *sprite, unsigned int x, unsigned int y);
 int	fn_draw_map(t_game *game);
 
 /*----------------  moving.c  ---------------*/
-void	fn_move_up(t_game *game);
+unsigned int	fn_find_new_y(t_game *game, char *direction);
+unsigned int	fn_find_new_x(t_game *game, char *direction);
+void	fn_alter_map(t_game *game, unsigned int new_y, unsigned int new_x, char tile);
+void	fn_move(t_game *game, char *direction);
 
 /*----------------  parse_map.c  ---------------*/
 void	fn_get_window_dimensions(t_game *game, char *map_file);
