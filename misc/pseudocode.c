@@ -11,6 +11,7 @@ __main
 			-- is it rectangular ?
 			-- is there 4 walls ?
 			-- is there only allowed signs ?
+			-- at least one player and one exit ?
 			-- can I backtrack through it ?
 		- get player position
 

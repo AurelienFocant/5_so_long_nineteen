@@ -52,6 +52,7 @@ typedef struct	s_game
 	size_t			columns;
 	unsigned int	y_player_pos;
 	unsigned int	x_player_pos;
+	unsigned int	collectibles;
 	t_sprite	sprite;
 }				t_game;
 

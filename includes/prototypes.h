@@ -3,6 +3,7 @@
 /*----------------  parse_map.c  ---------------*/
 void	fn_get_window_dimensions(t_game *game, char *map_file);
 void	fn_pass_map_into_struct(t_game *game, char *map_file);
+void	fn_extract_game_info(t_game *game);
 void	fn_parse_map(t_game *game, char *map_file);
 
 /*----------------  check_args.c  ---------------*/
