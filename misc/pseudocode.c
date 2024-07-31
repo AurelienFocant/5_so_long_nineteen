@@ -4,9 +4,10 @@ __main
 		- check map file
 	
 	-- parse map
+		- get window dimensions
 		- put map into char**
-			-- get window dimensions
 		- check map for error
+			-- is there minimum 3 rows and 3 columns ?
 			-- is it rectangular ?
 			-- is there 4 walls ?
 			-- is there only allowed signs ?

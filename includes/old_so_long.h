@@ -10,7 +10,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <sys/errno.h>
 
 # define TILE_WIDTH 64
 # define TILE_HEIGHT 64
@@ -42,18 +41,22 @@ typedef struct	s_sprite
 	void	*empty_tile;
 }				t_sprite;
 
-typedef struct	s_game
+typedef struct	s_data
 {
-	void			*mlx;
-	void			*win;
-	void			*img;
-	char			**map;
-	size_t			rows;
-	size_t			columns;
-	unsigned int	y_player_pos;
-	unsigned int	x_player_pos;
+	size_t		x_axis_map_size;
+	size_t		y_axis_map_size;
+	char		*map_file;
+	char		**map;
+	void		*mlx;
+	void		*win;
+	void		*img;
+	int			bits_per_pixel;
+	int			bytes_per_line;
+	int			endian;
+	int			y_player_pos;
+	int			x_player_pos;
 	t_sprite	sprite;
-}				t_game;
+}				t_data;
 
 #include "prototypes.h"
 
