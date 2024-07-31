@@ -1,13 +1,5 @@
 #include "so_long.h"
 
-void	fn_error_exit(char *msg, int errnum, int exitcode)
-{
-	if (!errno)
-		errno = errnum;
-	perror(msg);
-	exit(exitcode);	
-}
-
 void	fn_check_map_file(char *map_file)
 {
 	(void) map_file;

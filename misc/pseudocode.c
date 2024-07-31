@@ -14,6 +14,7 @@ __main
 			-- at least one player and one exit ?
 			-- can I backtrack through it ?
 		- get player position
+		- count collectibles
 
 	-- setup_game
 		- parse map

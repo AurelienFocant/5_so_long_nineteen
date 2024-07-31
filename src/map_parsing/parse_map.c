@@ -31,7 +31,7 @@ void	fn_pass_map_into_struct(t_game *game, char *map_file)
 	line = ft_get_next_line(fd);	
 	if (!line)
 		fn_error_exit(NULL, errno, 3);
-	game->map = malloc(sizeof(char *) * game->rows);
+	game->map = malloc(sizeof(char *) * (game->rows + 1));
 	if (!game->map)
 		fn_error_exit(NULL, ENOMEM, 4);
 	while (line)
@@ -40,6 +40,7 @@ void	fn_pass_map_into_struct(t_game *game, char *map_file)
 		game->rows += 1;
 		line = ft_get_next_line(fd);	
 	}
+	game->map[game->rows + 1] = NULL;
 	close(fd);
 }
 
@@ -55,13 +56,13 @@ void	fn_extract_game_info(t_game *game)
 		col = 0;
 		while (col < game->columns)
 		{
-			if (game->map[row][col] == PLAYER)
+			if (game->map[row][col] == COLLECT)
+				game->collectibles++;
+			else if (game->map[row][col] == PLAYER)
 			{
 				game->y_player_pos = row;
 				game->x_player_pos = col;
 			}
-			if (game->map[row][col] == COLLECT)
-				game->collectibles++;
 			col++;
 		}
 		row++;
