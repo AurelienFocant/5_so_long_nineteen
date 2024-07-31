@@ -24,8 +24,9 @@ void	fn_get_window_dimensions(t_game *game, char *map_file)
 
 void	fn_pass_map_into_struct(t_game *game, char *map_file)
 {
-	int		fd;
-	char	*line;
+	int			fd;
+	char		*line;
+	unsigned int	i;
 	
 	fd = open(map_file, O_RDONLY);
 	line = ft_get_next_line(fd);	
@@ -34,13 +35,13 @@ void	fn_pass_map_into_struct(t_game *game, char *map_file)
 	game->map = malloc(sizeof(char *) * (game->rows + 1));
 	if (!game->map)
 		fn_error_exit(NULL, ENOMEM, 4);
+	i = 0;
 	while (line)
 	{
-		game->map[game->rows] = line;
-		game->rows += 1;
+		game->map[i++] = line;
 		line = ft_get_next_line(fd);	
 	}
-	game->map[game->rows + 1] = NULL;
+	game->map[i] = NULL;
 	close(fd);
 }
 

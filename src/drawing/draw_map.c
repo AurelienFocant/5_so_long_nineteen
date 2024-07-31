@@ -2,10 +2,10 @@
 
 void	fn_draw_tile(t_game *game, void *sprite, unsigned int x, unsigned int y)
 {
-	mlx_put_image_to_window(data->mlx, data->win, sprite, x * TILE_WIDTH, y * TILE_HEIGHT);
+	mlx_put_image_to_window(game->mlx, game->win, sprite, x * TILE_WIDTH, y * TILE_HEIGHT);
 }
 
-void	fn_draw_map(t_game *game)
+int	fn_draw_map(t_game *game)
 {
 	unsigned int	y;
 	unsigned int	x;

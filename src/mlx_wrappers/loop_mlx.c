@@ -1,4 +1,6 @@
-void	fn_exit_game(t_game *game)
+#include "so_long.h"
+
+int	fn_exit_game(t_game *game)
 {
 	mlx_destroy_image(game->mlx, game->img);
 	mlx_destroy_window(game->mlx, game->win);
@@ -24,7 +26,7 @@ int	fn_key_hook(int key, t_game *game)
 	return (0);
 }
 
-fn_loop_mlx(t_game *game)
+void	fn_loop_mlx(t_game *game)
 {
 	mlx_hook(game->win, KEYDOWN, 0, fn_key_hook, game);
 	mlx_hook(game->win, RED_LIGHT, 0, fn_exit_game, game);

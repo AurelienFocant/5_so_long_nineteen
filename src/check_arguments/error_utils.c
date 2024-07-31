@@ -16,13 +16,14 @@ void	fn_free_null(char *ptr)
 		ptr = NULL;
 	}
 }
+
 void	fn_free_map(t_game *game)
 {
 	unsigned int	i;
 
 	i = 0;
 	while (game->map[i])
-		fn_free_null(game->map[i]);
+		fn_free_null(game->map[i++]);
 	free(game->map);
 	game->map = NULL;
 }
