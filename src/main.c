@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 	fn_check_args(argc, argv);
 	fn_parse_map(&game, argv[1]);
 	/*
-	fn_setup_game(&game);
-	fn_mlx_loop(&game);
+	fn_setup_mlx(&game);
+	fn_loop_mlx(&game);
 	*/
 }

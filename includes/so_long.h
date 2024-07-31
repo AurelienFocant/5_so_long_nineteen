@@ -38,7 +38,7 @@ typedef struct	s_sprite
 	void	*wall;
 	void	*player;
 	void	*exit;
-	void	*collectible;
+	void	*object;
 	void	*empty_tile;
 }				t_sprite;
 
