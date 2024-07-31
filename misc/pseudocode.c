@@ -16,9 +16,7 @@ __main
 		- get player position
 		- count collectibles
 
-	-- setup_game
-		- parse map
-		- mlx_init
+	-- mlx_init
 			-- create window
 			-- create image
 			-- retrieve sprites
