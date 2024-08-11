@@ -34,6 +34,10 @@
 # define ARROW_LEFT		123 
 # define ARROW_DOWN		125 
 # define ARROW_RIGHT	124 
+# define UP		1 
+# define LEFT	2 
+# define DOWN	3 
+# define RIGHT	4
 
 typedef struct	s_sprite
 {

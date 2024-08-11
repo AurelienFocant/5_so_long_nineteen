@@ -14,13 +14,13 @@ int	fn_key_hook(int key, t_game *game)
 	if (key == ESC)
 		fn_exit_game(game);
 	if (key == ARROW_UP || key == KEY_W)
-		fn_move(game, "up");
+		fn_move(game, UP);
 	if (key == ARROW_LEFT || key == KEY_A)
-		fn_move(game, "left");
+		fn_move(game, LEFT);
 	if (key == ARROW_DOWN || key == KEY_S)
-		fn_move(game, "down");
+		fn_move(game, DOWN);
 	if (key == ARROW_RIGHT || key == KEY_D)
-		fn_move(game, "right");
+		fn_move(game, RIGHT);
 	return (0);
 }
 
