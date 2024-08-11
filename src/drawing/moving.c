@@ -43,8 +43,9 @@ void	fn_alter_map(t_game *game, unsigned int new_y, unsigned int new_x, char til
 
 void	fn_move(t_game *game, int direction)
 {
-	unsigned int	new_y;
-	unsigned int	new_x;
+	unsigned int		new_y;
+	unsigned int		new_x;
+	static unsigned int	count = 0;
 
 	new_y = fn_find_new_y(game, direction);
 	new_x = fn_find_new_x(game, direction);
@@ -55,6 +56,10 @@ void	fn_move(t_game *game, int direction)
 		else if (game->map[new_y][new_x] == COLLECT)
 			fn_alter_map(game, new_y, new_x, COLLECT);
 		else if (game->map[new_y][new_x] == EXIT && game->collectibles == 0)
+		{
+			ft_printf("You win. That was impressive...");
 			fn_exit_game(game);
+		}
 	}
+	ft_printf("%i\n", ++count);
 }

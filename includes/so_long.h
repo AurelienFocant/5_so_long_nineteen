@@ -52,7 +52,6 @@ typedef struct	s_game
 {
 	void			*mlx;
 	void			*win;
-	void			*img;
 	char			**map;
 	size_t			rows;
 	size_t			columns;

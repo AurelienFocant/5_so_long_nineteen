@@ -31,6 +31,5 @@ void	fn_setup_mlx(t_game *game)
 		fn_error_exit("mlx init failed", ENOENT, 6);
 	}
 	game->win = mlx_new_window(game->mlx, window_width, window_height, "plouf");
-	game->img = mlx_new_image(game->mlx, window_width, window_height);
 	fn_retrieve_sprites(game);
 }

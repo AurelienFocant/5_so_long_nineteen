@@ -2,7 +2,6 @@
 
 int	fn_exit_game(t_game *game)
 {
-	mlx_destroy_image(game->mlx, game->img);
 	mlx_destroy_window(game->mlx, game->win);
 	free(game->mlx);
 	fn_free_map(game);

@@ -4,7 +4,6 @@ void	fn_init_struct(t_game *game)
 {
 	game->mlx = NULL;
 	game->win = NULL;
-	game->img = NULL;
 	game->map = NULL;
 	game->rows = 0;
 	game->columns = 0;
