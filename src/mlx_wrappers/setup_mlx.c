@@ -11,10 +11,7 @@ void	fn_retrieve_sprites(t_game *game)
 	game->sprite.object = mlx_xpm_file_to_image(game->mlx, "misc/sprites/heart.xpm", &img_width, &img_height);
 	game->sprite.empty_tile = mlx_xpm_file_to_image(game->mlx, "misc/sprites/bg.xpm", &img_width, &img_height);
 	if (fn_is_sprite_null(game->sprite))
-	{
-		//free map
-		fn_error_exit("Problem retrieving sprites", ENOENT, 5);
-	}
+		fn_free_and_exit("Problem retrieving sprites", ENOENT, 5, game);
 }
 
 void	fn_setup_mlx(t_game *game)
