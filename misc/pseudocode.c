@@ -7,11 +7,12 @@ __main
 		- get window dimensions
 		- put map into char**
 		- check map for error
-			-- is there minimum 3 rows and 3 columns ?
 			-- is it rectangular ?
+				- is there minimum 3 rows and 3 columns ?
 			-- is there 4 walls ?
 			-- is there only allowed signs ?
-			-- at least one player and one exit ?
+				- only one player and one exit ?
+				- at least one collectible
 			-- can I backtrack through it ?
 		- get player position
 		- count collectibles
