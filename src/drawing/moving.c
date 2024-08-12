@@ -75,9 +75,11 @@ void	fn_move(t_game *game, int direction)
 			fn_alter_map(game, new_y, new_x, COLLECT);
 		else if (game->map[new_y][new_x] == EXIT && game->collectibles == 0)
 		{
-			ft_printf("You win. That was impressive...");
+			ft_printf("%i\n", ++count);
+			ft_printf("You win. That was impressive...\n");
 			fn_exit_game(game);
 		}
+		if (game->map[new_y][new_x] != EXIT)
+			ft_printf("%i\n", ++count);
 	}
-	ft_printf("%i\n", ++count);
 }
