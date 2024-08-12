@@ -41,12 +41,30 @@ void	fn_alter_map(t_game *game, unsigned int new_y, unsigned int new_x, char til
 		game->collectibles--;
 }
 
+void	fn_assign_sprite(t_game *game, int direction)
+{
+	int	img_width;
+	int	img_height;
+
+
+	if (direction == UP)
+		game->sprite.player = mlx_xpm_file_to_image(game->mlx, "misc/sprites/link_up.xpm", &img_width, &img_height);
+	else if (direction == LEFT)
+		game->sprite.player = mlx_xpm_file_to_image(game->mlx, "misc/sprites/link_left.xpm", &img_width, &img_height);
+	else if (direction == RIGHT)
+		game->sprite.player = mlx_xpm_file_to_image(game->mlx, "misc/sprites/link_right.xpm", &img_width, &img_height);
+	else
+		game->sprite.player = mlx_xpm_file_to_image(game->mlx, "misc/sprites/link_down.xpm", &img_width, &img_height);
+
+}
+
 void	fn_move(t_game *game, int direction)
 {
 	unsigned int		new_y;
 	unsigned int		new_x;
 	static unsigned int	count = 0;
 
+	fn_assign_sprite(game, direction);
 	new_y = fn_find_new_y(game, direction);
 	new_x = fn_find_new_x(game, direction);
 	if (game->map[new_y][new_x] != WALL)

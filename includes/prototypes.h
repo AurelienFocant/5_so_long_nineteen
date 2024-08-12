@@ -8,6 +8,7 @@ int	fn_draw_map(t_game *game);
 unsigned int	fn_find_new_y(t_game *game, int direction);
 unsigned int	fn_find_new_x(t_game *game, int direction);
 void	fn_alter_map(t_game *game, unsigned int new_y, unsigned int new_x, char tile);
+void	fn_assign_sprite(t_game *game, int direction);
 void	fn_move(t_game *game, int direction);
 
 /*----------------  parse_map.c  ---------------*/
