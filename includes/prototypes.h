@@ -17,6 +17,11 @@ void	fn_pass_map_into_struct(t_game *game, char *map_file);
 void	fn_extract_game_info(t_game *game);
 void	fn_parse_map(t_game *game, char *map_file);
 
+/*----------------  map_errors.c  ---------------*/
+int	fn_iswall(char c);
+void	fn_check_four_walls(t_game *game);
+void	fn_check_map_for_errors(t_game *game);
+
 /*----------------  setup_mlx.c  ---------------*/
 void	fn_retrieve_sprites(t_game *game);
 void	fn_setup_mlx(t_game *game);
@@ -30,6 +35,7 @@ void	fn_loop_mlx(t_game *game);
 void	fn_error_exit(char *msg, int errnum, int exitcode);
 void	fn_free_null(char *ptr);
 void	fn_free_map(t_game *game);
+void	fn_free_and_exit(char *msg, int errnum, int exitcode, t_game *game);
 int		fn_is_sprite_null(t_sprite sprite);
 
 /*----------------  check_args.c  ---------------*/
