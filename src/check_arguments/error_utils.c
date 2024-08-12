@@ -28,6 +28,12 @@ void	fn_free_map(t_game *game)
 	game->map = NULL;
 }
 
+void	fn_free_and_exit(char *msg, int errnum, int exitcode, t_game *game)
+{
+	fn_free_map(game);
+	fn_error_exit(msg, errnum, exitcode);
+}
+
 int		fn_is_sprite_null(t_sprite sprite)
 {
 	if (sprite.wall == NULL)
