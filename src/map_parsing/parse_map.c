@@ -75,5 +75,4 @@ void	fn_parse_map(t_game *game, char *map_file)
 	fn_get_window_dimensions(game, map_file);
 	fn_pass_map_into_struct(game, map_file);
 	fn_extract_game_info(game);
-	fn_check_map_for_errors(game);
 }

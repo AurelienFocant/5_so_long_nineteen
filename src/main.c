@@ -25,6 +25,7 @@ int	main(int argc, char **argv)
 	fn_init_struct(&game);
 	fn_check_args(argc, argv);
 	fn_parse_map(&game, argv[1]);
+	fn_check_map_for_errors(&game);
 	fn_setup_mlx(&game);
 	fn_loop_mlx(&game);
 }
