@@ -80,5 +80,5 @@ void	fn_check_map_for_errors(t_game *game)
 	fn_check_if_rectangle(game);
 	fn_check_four_walls(game);	
 	fn_check_elements(game);
-	//	fn_check_backtracking(game);
+	fn_check_backtracking(game);
 }

@@ -13,13 +13,25 @@ int	fn_key_hook(int key, t_game *game)
 	if (key == ESC)
 		fn_exit_game(game);
 	if (key == ARROW_UP || key == KEY_W)
+	{
+		fn_assign_sprite(game, UP);
 		fn_move(game, UP);
+	}
 	if (key == ARROW_LEFT || key == KEY_A)
+	{
+		fn_assign_sprite(game, LEFT);
 		fn_move(game, LEFT);
+	}
 	if (key == ARROW_DOWN || key == KEY_S)
+	{
+		fn_assign_sprite(game, DOWN);
 		fn_move(game, DOWN);
+	}
 	if (key == ARROW_RIGHT || key == KEY_D)
+	{
+		fn_assign_sprite(game, RIGHT);
 		fn_move(game, RIGHT);
+	}
 	return (0);
 }
 

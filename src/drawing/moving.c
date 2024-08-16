@@ -58,13 +58,12 @@ void	fn_assign_sprite(t_game *game, int direction)
 
 }
 
-void	fn_move(t_game *game, int direction)
+int	fn_move(t_game *game, int direction)
 {
 	unsigned int		new_y;
 	unsigned int		new_x;
 	static unsigned int	count = 0;
 
-	fn_assign_sprite(game, direction);
 	new_y = fn_find_new_y(game, direction);
 	new_x = fn_find_new_x(game, direction);
 	if (game->map[new_y][new_x] != WALL)
@@ -80,6 +79,11 @@ void	fn_move(t_game *game, int direction)
 			fn_exit_game(game);
 		}
 		if (game->map[new_y][new_x] != EXIT)
+		{
 			ft_printf("%i\n", ++count);
+			return (1);
+		}
+		return (0);
 	}
+	return (0);
 }
