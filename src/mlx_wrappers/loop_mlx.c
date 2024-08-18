@@ -26,11 +26,7 @@ int	fn_key_hook(int key, t_game *game)
 	if (direction >= UP && direction <= RIGHT)
 	{
 		fn_assign_sprite(game, direction);
-		if (fn_move(game, direction) == ENDGAME)
-		{
-			ft_printf("You win. That was impressive...\n");
-			fn_exit_game(game);
-		}
+		fn_move(game, direction);
 	}
 	return (TRUE);
 }
