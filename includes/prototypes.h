@@ -25,8 +25,10 @@ void	fn_check_elements(t_game *game);
 void	fn_check_map_for_errors(t_game *game);
 
 /*----------------  backtracking.c  ---------------*/
-int	fn_backtracking(t_game *game, unsigned int collectibles, unsigned int exit);
-void	fn_check_backtracking(t_game *game);
+int	fn_bt_move(t_game *game, int direction, unsigned int *exit);
+int	fn_backtracking(t_game *game_copy);
+void	fn_copy_map(t_game *copy, t_game *game);
+void	fn_start_flooding(t_game *game);
 
 /*----------------  setup_mlx.c  ---------------*/
 void	fn_retrieve_sprites(t_game *game);

@@ -10,29 +10,29 @@ int	fn_exit_game(t_game *game)
 
 int	fn_key_hook(int key, t_game *game)
 {
+	int	direction;
+
+	direction = -1;
 	if (key == ESC)
 		fn_exit_game(game);
 	if (key == ARROW_UP || key == KEY_W)
+		direction = UP;
+	else if (key == ARROW_LEFT || key == KEY_A)
+		direction = LEFT;
+	else if (key == ARROW_DOWN || key == KEY_S)
+		direction = DOWN;
+	else if (key == ARROW_RIGHT || key == KEY_D)
+		direction = RIGHT;
+	if (direction >= UP && direction <= RIGHT)
 	{
-		fn_assign_sprite(game, UP);
-		fn_move(game, UP);
+		fn_assign_sprite(game, direction);
+		if (fn_move(game, direction) == ENDGAME)
+		{
+			ft_printf("You win. That was impressive...\n");
+			fn_exit_game(game);
+		}
 	}
-	if (key == ARROW_LEFT || key == KEY_A)
-	{
-		fn_assign_sprite(game, LEFT);
-		fn_move(game, LEFT);
-	}
-	if (key == ARROW_DOWN || key == KEY_S)
-	{
-		fn_assign_sprite(game, DOWN);
-		fn_move(game, DOWN);
-	}
-	if (key == ARROW_RIGHT || key == KEY_D)
-	{
-		fn_assign_sprite(game, RIGHT);
-		fn_move(game, RIGHT);
-	}
-	return (0);
+	return (TRUE);
 }
 
 void	fn_loop_mlx(t_game *game)

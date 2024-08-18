@@ -1,60 +1,36 @@
 #include "so_long.h"
 
-int	fn_bt_move(t_game *game, int direction, int *exit)
+void	fn_flood_map(t_game *game, unsigned int y, unsigned int x)
 {
-	unsigned int		new_y;
-	unsigned int		new_x;
-	static unsigned int	count = 0;
-
-	new_y = fn_find_new_y(game, direction);
-	new_x = fn_find_new_x(game, direction);
-	if (game->map[new_y][new_x] != WALL)
-	{
-		if (game->map[new_y][new_x] == EMPTY)
-			fn_alter_map(game, new_y, new_x, EMPTY);
-		else if (game->map[new_y][new_x] == COLLECT)
-			fn_alter_map(game, new_y, new_x, COLLECT);
-		else if (game->map[new_y][new_x] == EXIT && game->collectibles == 0)
-		{
-			ft_printf("%i\n", ++count);
-			ft_printf("You win. That was impressive...\n");
-		}
-		else if (game->map[new_y][new_x] != EXIT)
-			*exit = 1;
-		if (game->map[new_y][new_x] != EXIT)
-		{
-			ft_printf("%i\n", ++count);
-			return (1);
-		}
-		return (0);
-	}
-	return (0);
+	game->map[y][x] = 'F';
+	if (game->map[y-1][x] != WALL && game->map[y-1][x] != 'F')
+		fn_flood_map(game, y-1, x);
+	if (game->map[y][x-1] != WALL && game->map[y][x-1] != 'F')
+		fn_flood_map(game, y, x-1);
+	if (game->map[y+1][x] != WALL && game->map[y+1][x] != 'F')
+		fn_flood_map(game, y+1, x);
+	if (game->map[y][x+1] != WALL && game->map[y][x+1] != 'F')
+		fn_flood_map(game, y, x+1);
 }
 
-int	fn_backtracking(t_game *game, unsigned int collectibles, unsigned int exit)
+int	fn_check_flood_map(t_game *game)
 {
-	unsigned int direction;
-	int	res;
+	unsigned int	row;
+	unsigned int	col;
 
-	if (collectibles == 0 && exit == 1)
-		return (1);
-	
-	direction = UP;
-	while (direction <= RIGHT)
+	row = 0;
+	while (row < game->rows)
 	{
-		res = fn_bt_move(game, direction, &exit);
-		if (!res)
+		col = 0;
+		while (col < game->columns)
 		{
-			direction++;
-			continue;
+			if (ft_strchr("EC", game->map[row][col]))
+				return (FALSE);
+			col++;
 		}
-		if (
-		if (fn_backtracking(game, collectibles, exit) == 1)
-			return (1);
-		fn_bt_move(game, (direction + 2) % 4);
-		direction++;
+		row++;
 	}
-	return (0);
+	return (TRUE);
 }
 
 void	fn_copy_map(t_game *copy, t_game *game)
@@ -69,20 +45,17 @@ void	fn_copy_map(t_game *copy, t_game *game)
 		i++;
 	}
 	copy->map[i] = NULL;
+	copy->rows = game->rows;
+	copy->columns = game->columns;
 }
 
-void	fn_check_backtracking(t_game *game)
+void	fn_start_flooding(t_game *game)
 {
-	unsigned int	collectibles;
-	unsigned int	exit;
 	t_game			game_copy;
 
 	fn_copy_map(&game_copy, game);
-	collectibles = 0;
-	exit = 0;
-	if (fn_backtracking(&game_copy, collectibles, exit))
-		printf("backtrack ok");
-	else
-		printf("backtrack nonk");
+	fn_flood_map(&game_copy, game->y_player_pos, game->x_player_pos);
+	if (!fn_check_flood_map(&game_copy))
+		fn_free_and_exit("No winning path available", ENOENT, 75, game);
 	fn_free_map(&game_copy);
 }

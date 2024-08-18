@@ -39,6 +39,10 @@
 # define DOWN	2 
 # define RIGHT	3
 
+# define FALSE 0
+# define TRUE 1
+# define ENDGAME 2
+
 typedef struct	s_sprite
 {
 	void	*wall;

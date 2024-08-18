@@ -36,9 +36,12 @@ void	fn_alter_map(t_game *game, unsigned int new_y, unsigned int new_x, char til
 	old_x = game->x_player_pos;
 	game->x_player_pos = new_x;
 	game->map[old_y][old_x] = EMPTY;
-	game->map[new_y][new_x] = PLAYER;
 	if (tile == COLLECT)
 		game->collectibles--;
+	if (tile == EXIT)
+		game->map[new_y][new_x] = EXIT;
+	else
+		game->map[new_y][new_x] = PLAYER;
 }
 
 void	fn_assign_sprite(t_game *game, int direction)
@@ -53,7 +56,7 @@ void	fn_assign_sprite(t_game *game, int direction)
 		game->sprite.player = mlx_xpm_file_to_image(game->mlx, "misc/sprites/link_left.xpm", &img_width, &img_height);
 	else if (direction == RIGHT)
 		game->sprite.player = mlx_xpm_file_to_image(game->mlx, "misc/sprites/link_right.xpm", &img_width, &img_height);
-	else
+	else if (direction == DOWN)
 		game->sprite.player = mlx_xpm_file_to_image(game->mlx, "misc/sprites/link_down.xpm", &img_width, &img_height);
 
 }
@@ -68,22 +71,20 @@ int	fn_move(t_game *game, int direction)
 	new_x = fn_find_new_x(game, direction);
 	if (game->map[new_y][new_x] != WALL)
 	{
-		if (game->map[new_y][new_x] == EMPTY)
-			fn_alter_map(game, new_y, new_x, EMPTY);
-		else if (game->map[new_y][new_x] == COLLECT)
-			fn_alter_map(game, new_y, new_x, COLLECT);
-		else if (game->map[new_y][new_x] == EXIT && game->collectibles == 0)
+		if (game->map[new_y][new_x] == EXIT)
+			if (game->collectibles == 0)
+			{
+				ft_printf("%i\n", ++count);
+				return (ENDGAME);
+			}
+			else
+				return (FALSE);
+		else
 		{
 			ft_printf("%i\n", ++count);
-			ft_printf("You win. That was impressive...\n");
-			fn_exit_game(game);
+			fn_alter_map(game, new_y, new_x, game->map[new_y][new_x]);
 		}
-		if (game->map[new_y][new_x] != EXIT)
-		{
-			ft_printf("%i\n", ++count);
-			return (1);
-		}
-		return (0);
+		return (TRUE);
 	}
-	return (0);
+	return (FALSE);
 }
