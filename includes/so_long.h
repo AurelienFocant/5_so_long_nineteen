@@ -61,6 +61,6 @@ typedef struct	s_game
 	t_sprite	sprite;
 }				t_game;
 
-#include "prototypes.h"
+#include "prototypes_so_long.h"
 
 #endif
