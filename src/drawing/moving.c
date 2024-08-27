@@ -4,25 +4,21 @@ unsigned int	fn_find_new_y(t_game *game, int direction)
 {
 	if (direction == UP)
 		return (game->y_player_pos - 1);
-	if (direction == LEFT)
-		return (game->y_player_pos);
 	if (direction == DOWN)
 		return (game->y_player_pos + 1);
-	if (direction == RIGHT)
+	if (direction == LEFT || direction == RIGHT)
 		return (game->y_player_pos);
 	return (0);
 }
 
 unsigned int	fn_find_new_x(t_game *game, int direction)
 {
-	if (direction == UP)
-		return (game->x_player_pos);
 	if (direction == LEFT)
 		return (game->x_player_pos - 1);
-	if (direction == DOWN)
-		return (game->x_player_pos);
 	if (direction == RIGHT)
 		return (game->x_player_pos + 1);
+	if (direction == UP || direction == DOWN)
+		return (game->x_player_pos);
 	return (0);
 }
 
@@ -56,33 +52,37 @@ void	fn_assign_sprite(t_game *game, int direction)
 	else if (direction == RIGHT)
 		game->sprite.player = mlx_xpm_file_to_image(game->mlx,
 				"misc/sprites/link_right.xpm", &img_width, &img_height);
-	else
+	else if (direction == DOWN)
 		game->sprite.player = mlx_xpm_file_to_image(game->mlx,
 				"misc/sprites/link_down.xpm", &img_width, &img_height);
 }
 
-void	fn_move(t_game *game, int direction)
+int	fn_move(t_game *game, int direction)
 {
 	unsigned int		new_y;
 	unsigned int		new_x;
 	static unsigned int	count = 0;
 
-	fn_assign_sprite(game, direction);
 	new_y = fn_find_new_y(game, direction);
 	new_x = fn_find_new_x(game, direction);
-	if (game->map[new_y][new_x] != WALL)
+	if (game->map[new_y][new_x] == WALL)
+		return (FALSE);
+	if (game->map[new_y][new_x] == EXIT)
 	{
-		if (game->map[new_y][new_x] == EMPTY)
-			fn_alter_map(game, new_y, new_x, EMPTY);
-		else if (game->map[new_y][new_x] == COLLECT)
-			fn_alter_map(game, new_y, new_x, COLLECT);
-		else if (game->map[new_y][new_x] == EXIT && game->collectibles == 0)
+		if (game->collectibles == 0)
 		{
 			ft_printf("%i\n", ++count);
 			ft_printf("You win. That was impressive...\n");
 			fn_exit_game(game);
+			return (TRUE);
 		}
-		if (game->map[new_y][new_x] != EXIT)
-			ft_printf("%i\n", ++count);
+		else
+			return (FALSE);
+	}
+	else
+	{
+		ft_printf("%i\n", ++count);
+		fn_alter_map(game, new_y, new_x, game->map[new_y][new_x]);
+		return (TRUE);
 	}
 }

@@ -8,3 +8,4 @@ obj/*
 mlx/*.o
 
 misc/tags
+Session.vim

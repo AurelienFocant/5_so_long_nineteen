@@ -24,7 +24,7 @@ unsigned int	fn_find_new_y(t_game *game, int direction);
 unsigned int	fn_find_new_x(t_game *game, int direction);
 void	fn_alter_map(t_game *game, unsigned int new_y, unsigned int new_x, char tile);
 void	fn_assign_sprite(t_game *game, int direction);
-void	fn_move(t_game *game, int direction);
+int	fn_move(t_game *game, int direction);
 
 /*----------------  main.c  ---------------*/
 void	fn_init_struct(t_game *game);
@@ -41,6 +41,12 @@ void	fn_get_window_dimensions(t_game *game, char *map_file);
 void	fn_pass_map_into_struct(t_game *game, char *map_file);
 void	fn_extract_game_info(t_game *game);
 void	fn_parse_map(t_game *game, char *map_file);
+
+/*----------------  backtracking.c  ---------------*/
+int	fn_bt_move(t_game *game, int direction, unsigned int *exit);
+int	fn_backtracking(t_game *game_copy);
+void	fn_copy_map(t_game *copy, t_game *game);
+void	fn_start_flooding(t_game *game);
 
 /*----------------  loop_mlx.c  ---------------*/
 int	fn_exit_game(t_game *game);
