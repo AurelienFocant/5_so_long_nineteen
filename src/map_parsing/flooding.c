@@ -1,16 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   flooding.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: afocant <afocant@student.s19.be>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/27 14:02:09 by afocant           #+#    #+#             */
+/*   Updated: 2024/08/27 14:02:10 by afocant          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	fn_flood_map(t_game *game, unsigned int y, unsigned int x)
 {
 	game->map[y][x] = 'F';
-	if (game->map[y-1][x] != WALL && game->map[y-1][x] != 'F')
-		fn_flood_map(game, y-1, x);
-	if (game->map[y][x-1] != WALL && game->map[y][x-1] != 'F')
-		fn_flood_map(game, y, x-1);
-	if (game->map[y+1][x] != WALL && game->map[y+1][x] != 'F')
-		fn_flood_map(game, y+1, x);
-	if (game->map[y][x+1] != WALL && game->map[y][x+1] != 'F')
-		fn_flood_map(game, y, x+1);
+	if (game->map[y - 1][x] != WALL && game->map[y - 1][x] != 'F')
+		fn_flood_map(game, y - 1, x);
+	if (game->map[y][x - 1] != WALL && game->map[y][x - 1] != 'F')
+		fn_flood_map(game, y, x - 1);
+	if (game->map[y + 1][x] != WALL && game->map[y + 1][x] != 'F')
+		fn_flood_map(game, y + 1, x);
+	if (game->map[y][x + 1] != WALL && game->map[y][x + 1] != 'F')
+		fn_flood_map(game, y, x + 1);
 }
 
 int	fn_check_flood_map(t_game *game)

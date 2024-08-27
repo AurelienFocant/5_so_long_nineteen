@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: afocant <afocant@student.s19.be>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/27 14:02:01 by afocant           #+#    #+#             */
+/*   Updated: 2024/08/27 14:02:02 by afocant          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	fn_get_window_dimensions(t_game *game, char *map_file)
@@ -5,9 +17,9 @@ void	fn_get_window_dimensions(t_game *game, char *map_file)
 	int		fd;
 	int		nl;
 	char	*line;
-	
+
 	fd = open(map_file, O_RDONLY);
-	line = ft_get_next_line(fd);	
+	line = ft_get_next_line(fd);
 	if (!line)
 		fn_error_exit(NULL, errno, 2);
 	nl = 1;
@@ -17,19 +29,19 @@ void	fn_get_window_dimensions(t_game *game, char *map_file)
 	{
 		game->rows += 1;
 		free(line);
-		line = ft_get_next_line(fd);	
+		line = ft_get_next_line(fd);
 	}
 	close(fd);
 }
 
 void	fn_pass_map_into_struct(t_game *game, char *map_file)
 {
-	int			fd;
-	char		*line;
+	int				fd;
+	char			*line;
 	unsigned int	i;
-	
+
 	fd = open(map_file, O_RDONLY);
-	line = ft_get_next_line(fd);	
+	line = ft_get_next_line(fd);
 	if (!line)
 		fn_error_exit(NULL, errno, 3);
 	game->map = malloc(sizeof(char *) * (game->rows + 1));
@@ -39,7 +51,7 @@ void	fn_pass_map_into_struct(t_game *game, char *map_file)
 	while (line)
 	{
 		game->map[i++] = line;
-		line = ft_get_next_line(fd);	
+		line = ft_get_next_line(fd);
 	}
 	game->map[i] = NULL;
 	close(fd);

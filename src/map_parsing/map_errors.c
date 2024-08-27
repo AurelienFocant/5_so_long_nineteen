@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_errors.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: afocant <afocant@student.s19.be>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/27 14:02:05 by afocant           #+#    #+#             */
+/*   Updated: 2024/08/27 14:02:06 by afocant          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	fn_check_if_rectangle(t_game *game)
@@ -6,7 +18,7 @@ void	fn_check_if_rectangle(t_game *game)
 
 	if (game->rows < 3 || game->columns < 3)
 		fn_free_and_exit("Map too small", ENOENT, 18, game);
-	i = 0;	
+	i = 0;
 	while (i < game->rows)
 	{
 		if (ft_strlen(game->map[i]) - 1 != game->columns)
@@ -36,10 +48,12 @@ void	fn_check_four_walls(t_game *game)
 		{
 			if (row == 0 || row == game->rows - 1)
 				if (!fn_iswall(game->map[row][col]))
-					fn_free_and_exit("Map not properly walled off", ENOENT, 17, game);
+					fn_free_and_exit("Map not properly walled off",
+						ENOENT, 17, game);
 			if (col == 0 || col == game->columns - 1)
 				if (!fn_iswall(game->map[row][col]))
-					fn_free_and_exit("Map not properly walled off", ENOENT, 18, game);
+					fn_free_and_exit("Map not properly walled off",
+						ENOENT, 18, game);
 			col++;
 		}
 		row++;
@@ -54,7 +68,7 @@ void	fn_check_elements(t_game *game)
 	unsigned int	col;
 
 	exit = 0;
-	player  = 0;
+	player = 0;
 	row = 0;
 	while (row < game->rows)
 	{
@@ -78,7 +92,7 @@ void	fn_check_elements(t_game *game)
 void	fn_check_map_for_errors(t_game *game)
 {
 	fn_check_if_rectangle(game);
-	fn_check_four_walls(game);	
+	fn_check_four_walls(game);
 	fn_check_elements(game);
 	fn_start_flooding(game);
 }

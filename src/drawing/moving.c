@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   moving.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: afocant <afocant@student.s19.be>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/27 14:02:14 by afocant           #+#    #+#             */
+/*   Updated: 2024/08/27 14:02:15 by afocant          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 unsigned int	fn_find_new_y(t_game *game, int direction)
@@ -76,8 +88,7 @@ int	fn_move(t_game *game, int direction)
 			fn_exit_game(game);
 			return (TRUE);
 		}
-		else
-			return (FALSE);
+		return (FALSE);
 	}
 	else
 	{
