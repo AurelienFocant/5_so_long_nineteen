@@ -1,4 +1,7 @@
-#include "so_long.h"
+#ifndef PROTOTYPES_SO_LONG_H
+# define PROTOTYPES_SO_LONG_H
+
+# include "so_long.h"
 
 /*----------------  check_args.c  ---------------*/
 void	fn_check_map_file(char *map_file);
@@ -47,3 +50,5 @@ void	fn_loop_mlx(t_game *game);
 /*----------------  setup_mlx.c  ---------------*/
 void	fn_retrieve_sprites(t_game *game);
 void	fn_setup_mlx(t_game *game);
+
+#endif

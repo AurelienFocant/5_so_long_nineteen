@@ -5,7 +5,7 @@ void	fn_error_exit(char *msg, int errnum, int exitcode)
 	if (!errno)
 		errno = errnum;
 	perror(msg);
-	exit(exitcode);	
+	exit(exitcode);
 }
 
 void	fn_free_null(char *ptr)
@@ -34,7 +34,7 @@ void	fn_free_and_exit(char *msg, int errnum, int exitcode, t_game *game)
 	fn_error_exit(msg, errnum, exitcode);
 }
 
-int		fn_is_sprite_null(t_sprite sprite)
+int	fn_is_sprite_null(t_sprite sprite)
 {
 	if (sprite.wall == NULL)
 		return (1);

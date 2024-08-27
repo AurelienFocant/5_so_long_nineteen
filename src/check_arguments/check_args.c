@@ -10,7 +10,7 @@ void	fn_check_map_file(char *map_file)
 	if (ft_strncmp(++ptr, "ber", 4) != 0)
 		fn_error_exit("Wrong map extension", ENOEXEC, 4);
 }
-	
+
 void	fn_check_nb_args(int argc)
 {
 	if (argc != 2)
@@ -19,6 +19,6 @@ void	fn_check_nb_args(int argc)
 
 void	fn_check_args(int argc, char **argv)
 {
-	fn_check_nb_args(argc);	
+	fn_check_nb_args(argc);
 	fn_check_map_file(argv[1]);
 }

@@ -1,16 +1,16 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include "so_long.h"
-#include "libft.h"
-#include "mlx.h"
+# include "so_long.h"
+# include "libft.h"
+# include "mlx.h"
 
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <sys/errno.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <string.h>
+# include <sys/errno.h>
 
 # define TILE_WIDTH 64
 # define TILE_HEIGHT 64
@@ -39,7 +39,7 @@
 # define DOWN	3 
 # define RIGHT	4
 
-typedef struct	s_sprite
+typedef struct s_sprite
 {
 	void	*wall;
 	void	*player;
@@ -48,7 +48,7 @@ typedef struct	s_sprite
 	void	*empty_tile;
 }				t_sprite;
 
-typedef struct	s_game
+typedef struct s_game
 {
 	void			*mlx;
 	void			*win;
@@ -58,9 +58,9 @@ typedef struct	s_game
 	unsigned int	y_player_pos;
 	unsigned int	x_player_pos;
 	unsigned int	collectibles;
-	t_sprite	sprite;
+	t_sprite		sprite;
 }				t_game;
 
-#include "prototypes_so_long.h"
+# include "prototypes_so_long.h"
 
 #endif

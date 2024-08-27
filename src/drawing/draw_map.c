@@ -2,7 +2,8 @@
 
 void	fn_draw_tile(t_game *game, void *sprite, unsigned int x, unsigned int y)
 {
-	mlx_put_image_to_window(game->mlx, game->win, sprite, x * TILE_WIDTH, y * TILE_HEIGHT);
+	mlx_put_image_to_window(game->mlx, game->win,
+		sprite, x * TILE_WIDTH, y * TILE_HEIGHT);
 }
 
 int	fn_draw_map(t_game *game)
@@ -29,7 +30,7 @@ int	fn_draw_map(t_game *game)
 				fn_draw_tile(game, game->sprite.player, x, y);
 			x++;
 		}
-		y++;	
+		y++;
 	}
 	return (0);
 }

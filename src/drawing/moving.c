@@ -26,7 +26,8 @@ unsigned int	fn_find_new_x(t_game *game, int direction)
 	return (0);
 }
 
-void	fn_alter_map(t_game *game, unsigned int new_y, unsigned int new_x, char tile)
+void	fn_alter_map(t_game *game,
+	unsigned int new_y, unsigned int new_x, char tile)
 {
 	unsigned int	old_y;
 	unsigned int	old_x;
@@ -46,16 +47,18 @@ void	fn_assign_sprite(t_game *game, int direction)
 	int	img_width;
 	int	img_height;
 
-
 	if (direction == UP)
-		game->sprite.player = mlx_xpm_file_to_image(game->mlx, "misc/sprites/link_up.xpm", &img_width, &img_height);
+		game->sprite.player = mlx_xpm_file_to_image(game->mlx,
+				"misc/sprites/link_up.xpm", &img_width, &img_height);
 	else if (direction == LEFT)
-		game->sprite.player = mlx_xpm_file_to_image(game->mlx, "misc/sprites/link_left.xpm", &img_width, &img_height);
+		game->sprite.player = mlx_xpm_file_to_image(game->mlx,
+				"misc/sprites/link_left.xpm", &img_width, &img_height);
 	else if (direction == RIGHT)
-		game->sprite.player = mlx_xpm_file_to_image(game->mlx, "misc/sprites/link_right.xpm", &img_width, &img_height);
+		game->sprite.player = mlx_xpm_file_to_image(game->mlx,
+				"misc/sprites/link_right.xpm", &img_width, &img_height);
 	else
-		game->sprite.player = mlx_xpm_file_to_image(game->mlx, "misc/sprites/link_down.xpm", &img_width, &img_height);
-
+		game->sprite.player = mlx_xpm_file_to_image(game->mlx,
+				"misc/sprites/link_down.xpm", &img_width, &img_height);
 }
 
 void	fn_move(t_game *game, int direction)
