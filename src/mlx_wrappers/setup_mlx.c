@@ -6,12 +6,15 @@
 /*   By: afocant <afocant@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:01:52 by afocant           #+#    #+#             */
-/*   Updated: 2024/08/27 14:01:53 by afocant          ###   ########.fr       */
+/*   Updated: 2024/08/29 17:47:36 by afocant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*
+ * Sprites are the work of thblonde@student.s19.be
+ */
 void	fn_retrieve_sprites(t_game *game)
 {
 	int	img_width;
@@ -44,6 +47,7 @@ void	fn_setup_mlx(t_game *game)
 		fn_free_map(game);
 		fn_error_exit("mlx init failed", ENOENT, 6);
 	}
-	game->win = mlx_new_window(game->mlx, window_width, window_height, "plouf");
+	game->win = mlx_new_window(game->mlx, window_width, window_height,
+			"The Legend of Thomas, the Prequel");
 	fn_retrieve_sprites(game);
 }

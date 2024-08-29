@@ -6,7 +6,7 @@
 /*   By: afocant <afocant@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:06:26 by afocant           #+#    #+#             */
-/*   Updated: 2024/08/27 14:06:29 by afocant          ###   ########.fr       */
+/*   Updated: 2024/08/29 18:48:36 by afocant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include <string.h>
 # include <sys/errno.h>
 
+# define HOR_RESOLUTION 2560
+# define VER_RESOLUTION 1440
 # define TILE_WIDTH 64
 # define TILE_HEIGHT 64
 
