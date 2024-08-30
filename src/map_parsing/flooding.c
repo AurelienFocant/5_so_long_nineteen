@@ -6,7 +6,7 @@
 /*   By: afocant <afocant@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:02:09 by afocant           #+#    #+#             */
-/*   Updated: 2024/08/27 14:02:10 by afocant          ###   ########.fr       */
+/*   Updated: 2024/08/30 11:42:15 by afocant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	fn_copy_map(t_game *copy, t_game *game)
 	unsigned int	i;
 
 	copy->map = malloc(sizeof(char *) * (game->rows + 1));
+	if (!copy->map)
+		fn_free_and_exit("Malloc on map copy has failed", errnom, 185, game);
 	i = 0;
 	while (i < game->rows)
 	{
