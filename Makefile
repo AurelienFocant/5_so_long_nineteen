@@ -19,7 +19,7 @@ OBJ_SUBDIRS	=	$(SRC_SUBDIRS:$(SRC_DIR)%=$(OBJ_DIR)%)
 
 OBJ			=	$(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 #---------------------------------------------------------#
-INC_DIR		=	includes
+INC_DIR		=	include
 
 LIBFT_DIR	=	libft
 
