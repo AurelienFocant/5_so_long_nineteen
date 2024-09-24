@@ -68,7 +68,7 @@ clean:
 	rm -rf $(OBJ_DIR)
 
 fclean:		clean
-	rm -rf $(NAME) *dSYM 
+	rm -rf $(NAME)
 
 libclean:
 	rm -rf $(LIBFT_DIR)/$(OBJ_DIR)
