@@ -32,8 +32,8 @@ ifeq ($(CPU),arm)
 	FT		=	ft_arm
 	MLX		=	mlx_arm
 else
-	LIBFT	=	libft_x86.a
-	FT		=	ft_x86
+	LIBFT	=	libft_darwin_x86.a
+	FT		=	ft_darwin_x86
 	MLX		=	mlx_x86
 endif
 

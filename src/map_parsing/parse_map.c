@@ -6,7 +6,7 @@
 /*   By: afocant <afocant@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:02:01 by afocant           #+#    #+#             */
-/*   Updated: 2024/08/27 14:02:02 by afocant          ###   ########.fr       */
+/*   Updated: 2024/09/28 16:21:58 by afocant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	fn_get_window_dimensions(t_game *game, char *map_file)
 	fd = open(map_file, O_RDONLY);
 	line = ft_get_next_line(fd);
 	if (!line)
-		fn_error_exit(NULL, errno, 2);
+		fn_error_exit("Error parsing map", EINVAL, 2);
 	nl = 1;
 	game->columns = ft_strlen(line) - nl;
 	game->rows = 0;

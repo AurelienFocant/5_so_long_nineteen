@@ -6,7 +6,7 @@
 /*   By: afocant <afocant@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:02:36 by afocant           #+#    #+#             */
-/*   Updated: 2024/08/27 14:02:37 by afocant          ###   ########.fr       */
+/*   Updated: 2024/09/28 16:30:51 by afocant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	fn_check_map_file(char *map_file)
 {
-	char	*ptr;
+	size_t	len;
 
-	ptr = ft_strchr(map_file, '.');
-	if (!ptr)
-		fn_error_exit("Wrong map extension", ENOEXEC, 3);
-	if (ft_strncmp(++ptr, "ber", 4) != 0)
-		fn_error_exit("Wrong map extension", ENOEXEC, 4);
+	len = ft_strlen(map_file);
+	if (len < 5)
+		fn_error_exit("Wrong map extension", EINVAL, 3);
+	if (ft_strncmp(&(map_file[len - 4]), ".ber", 4) != EXIT_SUCCESS || map_file[len - 5] == '/')
+		fn_error_exit("Wrong map extension", EINVAL, 4);
 }
 
 void	fn_check_nb_args(int argc)
