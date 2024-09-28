@@ -25,17 +25,9 @@ LIBFT_DIR	=	libft
 
 MLX_DIR		=	mlx
 
-CPU		=	$(shell uname -p)
-
-ifeq ($(CPU),arm)
-	LIBFT	=	libft_arm.a
-	FT		=	ft_arm
-	MLX		=	mlx_arm
-else
-	LIBFT	=	libft_darwin_x86.a
-	FT		=	ft_darwin_x86
-	MLX		=	mlx_x86
-endif
+LIBFT		=	libft.a
+FT			=	ft
+MLX			=	mlx
 
 
 .PHONY: all lib clean fclean libclean re

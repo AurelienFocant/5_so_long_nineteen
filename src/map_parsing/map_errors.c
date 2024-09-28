@@ -6,7 +6,7 @@
 /*   By: afocant <afocant@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:02:05 by afocant           #+#    #+#             */
-/*   Updated: 2024/08/29 18:51:40 by afocant          ###   ########.fr       */
+/*   Updated: 2024/09/28 16:45:29 by afocant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	fn_check_if_rectangle(t_game *game)
 	while (i < game->rows)
 	{
 		if (ft_strlen(game->map[i]) - 1 != game->columns)
-			fn_free_and_exit("Map is not a rectangle", ENOENT, 19, game);
+			fn_free_and_exit("Map is not a rectangle", EINVAL, 19, game);
 		i++;
 	}
 }
