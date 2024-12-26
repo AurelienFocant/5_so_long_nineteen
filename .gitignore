@@ -9,3 +9,4 @@ mlx/*.o
 
 misc/tags
 Session.vim
+*libmlx.a*
